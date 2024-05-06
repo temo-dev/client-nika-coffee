@@ -5391,7 +5391,7 @@ ol.wp-block-rss {
 }
 
 .header-links li,
-.header-links span,
+/* .header-links span, */
 .header-links p,
 .header-links a {
   color: var(--body-color);

@@ -1,7 +1,32 @@
+"use client";
 import Item from "@/containers/Item";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 
-const ShopComponent = () => {
+const ShopComponent = ({ data }) => {
+  const [filterCategory, setFilterCategory] = useState("all");
+  const [dataItem, setDataItem] = useState(null);
+
+  useEffect(() => {
+    console.log(filterCategory);
+    let newData = data?.filter((item) => item.isCategory == filterCategory);
+    setDataItem(newData);
+    if (filterCategory !== "all") {
+      let newData = data?.filter((item) => item.isCategory == filterCategory);
+      setDataItem(newData);
+    } else {
+      setDataItem(data);
+    }
+  }, [filterCategory, data]);
+
+  const hanldeFilter = (category) => {
+    switch (category) {
+      default:
+        setFilterCategory(category);
+        break;
+    }
+  };
+
   return (
     <>
       <section className="bg-smoke2 space" id="shop-sec">
@@ -15,62 +40,41 @@ const ShopComponent = () => {
           <div className="title-area text-center">
             <span className="sub-title">
               <img src="assets/img/theme-img/title_icon.svg" alt="Icon" />
-              Organic Products
+              <FormattedMessage
+                id="shop-sub-title"
+                defaultMessage="shop-sub-title"
+                description="shop-sub-title"
+              />
             </span>
-            <h2 className="sec-title">Organic &amp; Fresh Products Daily!</h2>
+            <h2 className="sec-title">
+              <FormattedMessage
+                id="shop-sec-title"
+                defaultMessage="shop-sec-title"
+                description="shop-sec-title"
+              />
+            </h2>
           </div>
           <div className="filter-menu indicator-active filter-menu-active">
-            <button
-              data-filter="*"
-              className="th-btn tab-btn active"
-              type="button"
-            >
-              ALL
-            </button>
-            <button
-              data-filter=".cat1"
-              className="th-btn tab-btn "
-              type="button"
-            >
-              Fruits
-            </button>
-            <button
-              data-filter=".cat2"
-              className="th-btn tab-btn"
-              type="button"
-            >
-              Vegetable
-            </button>
-            <button
-              data-filter=".cat3"
-              className="th-btn tab-btn"
-              type="button"
-            >
-              Meat &amp; Fish
-            </button>
-            <button
-              data-filter=".cat4"
-              className="th-btn tab-btn"
-              type="button"
-            >
-              Fruit Juice
-            </button>
-            <button
-              data-filter=".cat5"
-              className="th-btn tab-btn"
-              type="button"
-            >
-              Salads
-            </button>
+            {["all", "tea", "milk-tea", "sugar-brown", "cafe", "yogurt"].map(
+              (item) => (
+                <button
+                  data-filter="*"
+                  className="th-btn tab-btn active"
+                  type="button"
+                  onClick={() => hanldeFilter(item)}
+                >
+                  <FormattedMessage
+                    id={`category-${item}`}
+                    defaultMessage="button"
+                    description="button"
+                  />
+                </button>
+              )
+            )}
           </div>
           <div className="row gy-4 filter-active">
-            {[0, 1, 2, 3, 4, 5, 63].map((item) => (
-              <div
-                className="col-xl-3 col-lg-4 col-sm-6 filter-item"
-                key={item}
-              >
-                <Item />
-              </div>
+            {dataItem?.map((item) => (
+              <Item product={item} />
             ))}
           </div>
         </div>

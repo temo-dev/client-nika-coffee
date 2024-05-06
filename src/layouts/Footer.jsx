@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 
 const Footer = () => {
   return (
@@ -24,161 +25,66 @@ const Footer = () => {
                           alt="nika-coffee"
                           width={150}
                           height={150}
-                          priority
+                          fetchpriority="high"
                         />
                       </Link>
                     </div>
                     <p className="about-text">
-                      We provide specialized winterization services to safeguard
-                      your pool during the off-season, and when spring arrives,
-                      we handle the thorough opening process.
+                      <FormattedMessage
+                        id="footer-about"
+                        defaultMessage={"footer-about"}
+                        description={"footer-about"}
+                      />
                     </p>
                     <div className="th-social">
-                      <a href="https://www.facebook.com/">
+                      <Link href="https://www.facebook.com/">
                         <i className="fab fa-facebook-f" />
-                      </a>
-                      <a href="https://www.twitter.com/">
-                        <i className="fab fa-twitter" />
-                      </a>
-                      <a href="https://www.linkedin.com/">
-                        <i className="fab fa-linkedin-in" />
-                      </a>
-                      <a href="https://www.whatsapp.com/">
-                        <i className="fab fa-whatsapp" />
-                      </a>
+                      </Link>
+                      <Link href="https://www.instagram.com/">
+                        <i className="fab fa-instagram" />
+                      </Link>
+                      <Link href="https://www.youtube.com/">
+                        <i className="fab fa-youtube" />
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 col-xl-auto">
-                {/* <div className="widget widget_nav_menu footer-widget">
-                  <h3 className="widget_title">
-                    <img src="assets/img/theme-img/title_icon.svg" alt="Icon" />
-                    Quick Links
-                  </h3>
-                  <div className="menu-all-pages-container">
-                    <ul className="menu">
-                      <li>
-                        <a href="about.html">About Us</a>
-                      </li>
-                      <li>
-                        <a href="project.html">Portfolio</a>
-                      </li>
-                      <li>
-                        <a href="faq.html">Help &amp; FAQs</a>
-                      </li>
-                      <li>
-                        <a href="blog.html">Blog</a>
-                      </li>
-                      <li>
-                        <a href="contact.html">Contact Us</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div> */}
-              </div>
+              <div className="col-md-6 col-xl-auto"></div>
               <div className="col-md-6 col-xl-auto">
                 <div className="widget footer-widget">
-                  <h3 className="widget_title">
+                  <h3 className="widget_title" style={{ color: "#017d03" }}>
                     <img src="assets/img/theme-img/title_icon.svg" alt="Icon" />
-                    Contact Us
+                    <FormattedMessage
+                      id="footer-contact"
+                      defaultMessage={"footer-contact"}
+                      description={"footer-contact"}
+                    />
                   </h3>
                   <div className="th-widget-contact">
                     <div className="info-box">
                       <div className="info-box_icon">
                         <i className="fas fa-location-dot" />
                       </div>
-                      <p className="info-box_text">
-                        8502 Preston Rd. Inglewood, Maine 98380
-                      </p>
+                      <p className="info-box_text">Praha-Letnany</p>
                     </div>
                     <div className="info-box">
                       <div className="info-box_icon">
                         <i className="fas fa-phone" />
                       </div>
                       <p className="info-box_text">
-                        <a href="tel:+16326543564" className="info-box_link">
-                          +(163)-2654-3564
-                        </a>
-                        <a href="tel:+16326545432" className="info-box_link">
-                          +(163)-2654-5432
-                        </a>
-                      </p>
-                    </div>
-                    <div className="info-box">
-                      <div className="info-box_icon">
-                        <i className="fas fa-envelope" />
-                      </div>
-                      <p className="info-box_text">
-                        <a
-                          href="mailto:help24/7@frutin.com"
+                        <Link
+                          href="tel:+420774324885"
                           className="info-box_link"
                         >
-                          help24/7@frutin.com
-                        </a>
+                          +(420)-774-324-885
+                        </Link>
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 col-xl-auto">
-                {/* <div className="widget footer-widget">
-                  <h3 className="widget_title">
-                    <img src="assets/img/theme-img/title_icon.svg" alt="Icon" />
-                    Instagram
-                  </h3>
-                  <div className="sidebar-gallery">
-                    <div className="gallery-thumb">
-                      <img
-                        src="assets/img/widget/gallery_1_1.jpg"
-                        alt="Gallery Image"
-                      />
-                      <a
-                        href="assets/img/widget/gallery_1_1.jpg"
-                        className="gallery-btn popup-image"
-                      >
-                        <i className="fab fa-instagram" />
-                      </a>
-                    </div>
-                    <div className="gallery-thumb">
-                      <img
-                        src="assets/img/widget/gallery_1_2.jpg"
-                        alt="Gallery Image"
-                      />
-                      <a
-                        href="assets/img/widget/gallery_1_2.jpg"
-                        className="gallery-btn popup-image"
-                      >
-                        <i className="fab fa-instagram" />
-                      </a>
-                    </div>
-                    <div className="gallery-thumb">
-                      <img
-                        src="assets/img/widget/gallery_1_3.jpg"
-                        alt="Gallery Image"
-                      />
-                      <a
-                        href="assets/img/widget/gallery_1_3.jpg"
-                        className="gallery-btn popup-image"
-                      >
-                        <i className="fab fa-instagram" />
-                      </a>
-                    </div>
-                    <div className="gallery-thumb">
-                      <img
-                        src="assets/img/widget/gallery_1_4.jpg"
-                        alt="Gallery Image"
-                      />
-                      <a
-                        href="assets/img/widget/gallery_1_4.jpg"
-                        className="gallery-btn popup-image"
-                      >
-                        <i className="fab fa-instagram" />
-                      </a>
-                    </div>
-                  </div>
-                </div> */}
-              </div>
+              <div className="col-md-6 col-xl-auto"></div>
             </div>
           </div>
         </div>
@@ -192,14 +98,6 @@ const Footer = () => {
                   Rights Reserved.
                 </p>
               </div>
-              {/* <div className="col-md-6 text-center text-md-end">
-                <div className="payment-img">
-                  <img
-                    src="assets/img/normal/payment_methods.png"
-                    alt="Image"
-                  />
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

@@ -1,15 +1,22 @@
-import { Drawer } from "antd";
+import { useAppData } from "@/store/appStore";
+import { Drawer, Select } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 const Header = () => {
+  const { changeLanguage: changeLanguage, language: language } = useAppData();
+
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
   };
   const onClose = () => {
     setOpen(false);
+  };
+  const handleChange = (value) => {
+    changeLanguage(value);
   };
   return (
     <>
@@ -19,7 +26,11 @@ const Header = () => {
             <div className="row justify-content-center justify-content-lg-between align-items-center gy-2">
               <div className="col-auto d-none d-lg-block">
                 <p className="header-notice">
-                  Orders of $50 or more qualify for free shipping!
+                  <FormattedMessage
+                    id="header-notice"
+                    defaultMessage={"header-notice"}
+                    description={"header-notice"}
+                  />
                 </p>
               </div>
               <div className="col-auto">
@@ -27,21 +38,33 @@ const Header = () => {
                   <ul>
                     <li className="d-none d-sm-inline-block">
                       <i className="fal fa-location-dot" />
-                      <a href="https://www.google.com/maps">
-                        8502 Preston Rd. Inglewood, Maine 98380
-                      </a>
+                      <FormattedMessage
+                        id="header-location"
+                        defaultMessage={"header-location"}
+                        description={"header-location"}
+                      />
                     </li>
                     <li>
                       <div className="social-links">
-                        <a href="https://www.facebook.com/">
+                        <Link href="https://www.facebook.com/">
                           <i className="fab fa-facebook-f" />
-                        </a>
-                        <a href="https://www.instagram.com/">
+                        </Link>
+                        <Link href="https://www.instagram.com/">
                           <i className="fab fa-instagram" />
-                        </a>
-                        <a href="https://www.youtube.com/">
+                        </Link>
+                        <Link href="https://www.youtube.com/">
                           <i className="fab fa-youtube" />
-                        </a>
+                        </Link>
+                        <Select
+                          defaultValue={language}
+                          style={{ width: 120, color: "#000" }}
+                          onChange={handleChange}
+                          options={[
+                            { value: "en", label: "English" },
+                            { value: "cs", label: "Czech" },
+                            { value: "vi", label: "Vietnam" },
+                          ]}
+                        />
                       </div>
                     </li>
                   </ul>
@@ -63,7 +86,7 @@ const Header = () => {
                         alt="nika-coffee"
                         width={100}
                         height={100}
-                        priority
+                        fetchpriority="high"
                       />
                     </Link>
                   </div>
@@ -72,13 +95,31 @@ const Header = () => {
                   <nav className="main-menu d-none d-lg-inline-block">
                     <ul>
                       <li>
-                        <Link href="/">Home</Link>
+                        <Link href="/">
+                          <FormattedMessage
+                            id="home"
+                            defaultMessage={"home"}
+                            description={"home"}
+                          />
+                        </Link>
                       </li>
                       <li>
-                        <Link href="/about">About Us</Link>
+                        <Link href="/about">
+                          <FormattedMessage
+                            id="about-us"
+                            defaultMessage={"about-us"}
+                            description={"about-us"}
+                          />
+                        </Link>
                       </li>
                       <li>
-                        <Link href="/menu">Menu</Link>
+                        <Link href="/menu">
+                          <FormattedMessage
+                            id="menu"
+                            defaultMessage={"menu"}
+                            description={"menu"}
+                          />
+                        </Link>
                       </li>
                     </ul>
                   </nav>
@@ -90,21 +131,6 @@ const Header = () => {
                     <i className="far fa-bars" />
                   </button>
                 </div>
-                {/* <div className="col-auto d-none d-xl-block">
-                  <div className="header-button">
-                    <button
-                      type="button"
-                      className="simple-icon sideMenuToggler"
-                    >
-                      <span className="badge">5</span>
-                      <i className="fa-regular fa-cart-shopping" />
-                    </button>
-                    <a href="shop.html" className="th-btn style4">
-                      Shop Now
-                      <i className="fas fa-chevrons-right ms-2" />
-                    </a>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
@@ -113,13 +139,31 @@ const Header = () => {
           <nav className="th-mobile-menu d-lg-inline-block">
             <ul>
               <li>
-                <Link href="/">Home</Link>
+                <Link href="/">
+                  <FormattedMessage
+                    id="home"
+                    defaultMessage={"home"}
+                    description={"home"}
+                  />
+                </Link>
               </li>
               <li>
-                <Link href="/about">About Us</Link>
+                <Link href="/about">
+                  <FormattedMessage
+                    id="about-us"
+                    defaultMessage={"about-us"}
+                    description={"about-us"}
+                  />
+                </Link>
               </li>
               <li>
-                <Link href="/menu">Menu</Link>
+                <Link href="/menu">
+                  <FormattedMessage
+                    id="menu"
+                    defaultMessage={"menu"}
+                    description={"menu"}
+                  />
+                </Link>
               </li>
             </ul>
           </nav>
